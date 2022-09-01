@@ -1,0 +1,4 @@
+novus
+Pillow
+urllib
+image_similarity_measures
