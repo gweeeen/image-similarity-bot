@@ -97,11 +97,11 @@ async def on_message(message):
             scanned.append(user.id)
             try:
                 result = await self.bot.loop.run_in_executor(None, lambda: check_pfp(user))
-            except RuntimeError:
+            except:
                 x = open('scanned.txt','w+',encoding='utf-8')
                 x.write(f'{scanned}')
                 x.close()
-                await message.channel.send('ratelimited, giving up.\njust send the txt file the bot sends in this message when running !fulltest again to exclude already scanned ids\n**a second file with the suspicious ids will be sent**',file=discord.File(fp='scanned.txt'))
+                await message.channel.send('error occurred or ratelimited, giving up.\njust send the txt file the bot sends in this message when running !fulltest again to exclude already scanned ids\n**a second file with the suspicious ids will be sent**',file=discord.File(fp='scanned.txt'))
                 break
             if result > threshold:
                 sus.append(user.id)
